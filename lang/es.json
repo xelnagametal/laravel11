@@ -105,5 +105,7 @@
     "Edit": "Editar",
     "Edit form": "Formulario de edición",
     "Post updated successfully": "Publicación actualizada correctamente",
-    "Post created successfully": "Publicación creada correctamente"
+    "Post created successfully": "Publicación creada correctamente",
+    "Delete": "Eliminar",
+    "Post deleted successfully": "Publicación eliminada correctamente"
 }

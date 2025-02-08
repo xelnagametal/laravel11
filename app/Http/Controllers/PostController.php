@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SavePostRequest;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     public function index()
     {
         $posts = Post::all();
@@ -24,23 +29,11 @@ class PostController extends Controller
         return view('posts.create', [ 'post' => new Post ]);
     }
 
-    public function store(Request $request)
+    public function store(SavePostRequest $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
+        Post::create($request->validated());
 
-        $post = new Post;
-
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-
-        $post->save();
-
-        session()->flash('message', __('Post created successfully'));
-
-        return to_route('posts.index');
+        return to_route('posts.index')->with('message', __('Post created successfully'));
     }
 
     public function edit(Post $post)
@@ -48,20 +41,17 @@ class PostController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Request $request, Post $post)
+    public function update(SavePostRequest $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
+        $post->update($request->validated());
 
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
+        return to_route('posts.show', $post)->with('message', __('Post updated successfully'));
+    }
 
-        $post->save();
+    public function destroy(Post $post)
+    {
+        $post->delete();
 
-        session()->flash('message', __('Post updated successfully'));
-
-        return to_route('posts.show', $post);
+        return to_route('posts.index')->with('message', __('Post deleted successfully'));
     }
 }
