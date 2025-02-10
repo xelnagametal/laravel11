@@ -29,7 +29,7 @@
     @endforeach
 </x-layout> --}}
 
-<x-layout meta-title="{{ __('Blog') }}" meta-description="{{ __('Blog page') }}">
+<x-blog-layout meta-title="{{ __('Blog') }}" meta-description="{{ __('Blog page') }}">
     <div class="mx-auto mt-4 max-w-6xl">
         <h1 class="my-4 text-center font-serif text-4xl font-extrabold text-sky-600 md:text-5xl">{{ __('Blog') }}</h1>
         @auth

@@ -1,26 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="es" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $metaTitle ?? __('Default title') }}</title>
-    <meta name="description" content="{{ $metaDescription ?? __('Default description') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="flex h-screen flex-col bg-slate-100 selection:bg-sky-600 selection:text-sky-50 dark:bg-slate-950">
-    @include('partials.navigation')
-    <x-partials.navigation />
-    @session('message')
-        <div style="background-color: green; color: white;">
-            {{ $value }}
-        </div>
-    @endsession
-    <main class="flex-1 p-4">
-        {{ $slot }}
-    </main>
-</body>
-</html> --}}
-
 <!doctype html>
 <html lang="es" class="dark">
 <head>
@@ -34,8 +11,8 @@
 </head>
 <body class="flex h-screen flex-col bg-slate-100 selection:bg-sky-600 selection:text-sky-50 dark:bg-slate-950">
 
-{{-- @include('layouts.blog-navigation') --}}
-<x-partials.navigation />
+@include('layouts.blog-navigation')
+{{-- <x-partials.navigation /> --}}
 
 @session('message')
 <div class="bg-green-600 p-4 text-xl text-green-50 dark:bg-green-800">{{ $value }}</div>
@@ -61,8 +38,7 @@
                      role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <title>Twitter</title>
                     <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                </svg
-                >
+                </svg>
             </a>
             <a href="#">
                 <svg class="w-6 fill-current text-slate-600 duration-300 hover:text-[#E4405F] dark:text-slate-400 dark:hover:text-[#E4405F]"
